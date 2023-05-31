@@ -8,18 +8,18 @@ import {
   resetSession,
   updateUser,
   verifyOtp,
-} from './auth.controllers';
+} from './users.controllers';
 
 const router = Router();
 
 /** POST Request */
 router.post('/register', register);
-router.post('/register-mail');
-router.post('/authenticate');
+// router.post('/register-mail');
+// router.post('/authenticate');
 router.post('/login', login);
 
 /** GET Request */
-router.get('/user/:username', getUser);
+router.get('/:userid', getUser);
 router.get('/generate-otp', generateOtp);
 router.get('/verify-otp', verifyOtp);
 router.get('/reset-session', resetSession);

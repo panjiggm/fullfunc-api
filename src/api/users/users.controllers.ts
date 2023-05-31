@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
-/** POST http://localhost:5000/api/auth/register
+/** POST http://localhost:5000/api/users/register
  body : {
     "username": "",
     "password": "",
@@ -23,7 +23,7 @@ export async function register(
   }
 }
 
-/** POST http://localhost:5000/api/auth/login
+/** POST http://localhost:5000/api/users/login
  body : {
     "username": "",
     "password": "",
@@ -40,7 +40,7 @@ export async function login(
   }
 }
 
-/** GET http://localhost:5000/api/auth/user/jajang123 */
+/** GET http://localhost:5000/api/users/:userid */
 export async function getUser(
   req: Request,
   res: Response,
@@ -52,7 +52,7 @@ export async function getUser(
   }
 }
 
-/** PUT http://localhost:5000/api/auth/updateuser
+/** PUT http://localhost:5000/api/users/updateuser
  * @param : {
     "id": <userid>,
  }
@@ -73,7 +73,7 @@ export async function updateUser(
   }
 }
 
-/** GET http://localhost:5000/api/auth/generate-otp */
+/** GET http://localhost:5000/api/users/generate-otp */
 export async function generateOtp(
   req: Request,
   res: Response,
@@ -85,7 +85,7 @@ export async function generateOtp(
   }
 }
 
-/** GET http://localhost:5000/api/auth/verify-otp */
+/** GET http://localhost:5000/api/users/verify-otp */
 export async function verifyOtp(
   req: Request,
   res: Response,
@@ -98,7 +98,7 @@ export async function verifyOtp(
 }
 
 // successfully redirect user when OTP is valid
-/** GET http://localhost:5000/api/auth/reset-session */
+/** GET http://localhost:5000/api/users/reset-session */
 export async function resetSession(
   req: Request,
   res: Response,
@@ -110,7 +110,7 @@ export async function resetSession(
   }
 }
 
-/** PUT http://localhost:5000/api/auth/reset-password */
+/** PUT http://localhost:5000/api/users/reset-password */
 export async function resetPassword(
   req: Request,
   res: Response,
