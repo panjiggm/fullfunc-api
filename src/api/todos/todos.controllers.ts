@@ -3,6 +3,7 @@ import { Todo, TodoWithId, Todos } from './todos.model';
 import { ParamsWithId } from '../../interfaces/ParamsWithId';
 import { ObjectId } from 'mongodb';
 
+/** GET http://localhost:5000/api/todos */
 export async function findAll(
   req: Request,
   res: Response<TodoWithId[]>,
@@ -17,6 +18,7 @@ export async function findAll(
   }
 }
 
+/** GET http://localhost:5000/api/todos/task1 */
 export async function findOne(
   req: Request<ParamsWithId, TodoWithId, {}>,
   res: Response<TodoWithId>,
@@ -38,6 +40,12 @@ export async function findOne(
   }
 }
 
+/** POST http://localhost:5000/api/todos
+ * @param : {
+    "content": "",
+    "done": false
+ }
+ */
 export async function createOne(
   req: Request<{}, TodoWithId>,
   res: Response<TodoWithId>,
@@ -60,6 +68,12 @@ export async function createOne(
   }
 }
 
+/** PUT http://localhost:5000/api/todos/:todo-id
+ body : {
+    "content": "",
+    "done": false
+ }
+ */
 export async function updateOne(
   req: Request<ParamsWithId, TodoWithId, Todo>,
   res: Response<TodoWithId>,
@@ -85,6 +99,7 @@ export async function updateOne(
   }
 }
 
+/** DELETE http://localhost:5000/api/todos/:todo-id */
 export async function deleteOne(
   req: Request<ParamsWithId, {}, {}>,
   res: Response<{}>,

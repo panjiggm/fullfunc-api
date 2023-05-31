@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 
 /** POST http://localhost:5000/api/auth/register
- * @param : {
+ body : {
     "username": "",
     "password": "",
     "email": "",
@@ -24,7 +24,7 @@ export async function register(
 }
 
 /** POST http://localhost:5000/api/auth/login
- * @param : {
+ body : {
     "username": "",
     "password": "",
  }
