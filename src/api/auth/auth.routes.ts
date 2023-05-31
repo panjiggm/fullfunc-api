@@ -1,21 +1,31 @@
 import { Router } from 'express';
+import {
+  generateOtp,
+  getUser,
+  login,
+  register,
+  resetPassword,
+  resetSession,
+  updateUser,
+  verifyOtp,
+} from './auth.controllers';
 
 const router = Router();
 
 /** POST Request */
-router.post('/register');
+router.post('/register', register);
 router.post('/register-mail');
 router.post('/authenticate');
-router.post('/login');
+router.post('/login', login);
 
 /** GET Request */
-router.get('/user/:username');
-router.get('/generate-otp');
-router.get('/verify-otp');
-router.get('/reset-session');
+router.get('/user/:username', getUser);
+router.get('/generate-otp', generateOtp);
+router.get('/verify-otp', verifyOtp);
+router.get('/reset-session', resetSession);
 
 /** PUT Request */
-router.get('/updateuser');
-router.get('/reset-password');
+router.get('/updateuser', updateUser);
+router.get('/reset-password', resetPassword);
 
 export default router;
