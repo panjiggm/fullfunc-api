@@ -3,6 +3,7 @@ import { ZodError } from 'zod';
 
 import ErrorResponse from './interfaces/ErrorResponse';
 import RequestValidator from './interfaces/RequestValidator';
+import { Users } from './api/users/users.model';
 
 export function validateRequest(validator: RequestValidator) {
   return async (req: Request, res: Response, next: NextFunction) => {
@@ -49,4 +50,25 @@ export function errorHandler(
     message: err.message,
     stack: process.env.NODE_ENV === 'production' ? '🥞' : err.stack,
   });
+}
+
+export async function verifyUser(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const { username } = req.method === 'GET' ? req.query : req.body;
+
+    // check user existence
+    const exist = await Users.findOne({ username });
+    if (!exist) res.status(404).send({ error: "Can't find User!" });
+
+    res.locals.user = exist;
+
+    next();
+  } catch (error) {
+    res.status(404).send({ error: 'Authentication Error' });
+    next(error);
+  }
 }

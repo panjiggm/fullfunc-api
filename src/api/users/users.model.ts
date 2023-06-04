@@ -6,11 +6,11 @@ export const User = z.object({
   username: z.string(),
   password: z.string(),
   email: z.string().email(),
-  firstname: z.string(),
-  lastname: z.string(),
-  mobile: z.string(),
-  address: z.string(),
-  profile: z.string(),
+  firstname: z.string().optional(),
+  lastname: z.string().optional(),
+  mobile: z.string().optional(),
+  address: z.string().optional(),
+  profile: z.string().optional(),
 });
 
 export type User = z.infer<typeof User>;
